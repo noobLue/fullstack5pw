@@ -168,10 +168,9 @@ describe("Blog app", () => {
         // Refresh page to see new order
         await page.reload()
 
+        // The blog with higher likes is first
         const newFirst = page.locator('.blog').first()
         await newFirst.getByRole('button', { name: 'show' }).click();
-
-        // The blog with higher likes is first
         await expect(newFirst.getByText('likes: 3')).toBeVisible()
       })
     })
